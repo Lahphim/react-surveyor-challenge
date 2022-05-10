@@ -2,7 +2,7 @@
 
 A project to challenge ourselves with specific web stacks to achieve the Internal Certification. 🚀
 
-The requirement of this project is about creating a surveyor with different type of questions such as the list below here.
+The requirement of this project is about creating a surveyor with different types of questions such as the list below here.
 
 #### Type of questions:
 * Listing
@@ -26,7 +26,7 @@ The requirement of this project is about creating a surveyor with different type
 $ git clone git@github.com:Lahphim/react-surveyor-challenge.git
 ```
 
-#### Run the application with development mode
+#### Run the application with the development mode
 
 Start the application.
 ```sh
