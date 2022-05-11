@@ -28,7 +28,7 @@ jobs:
         run: yarn lint
 
   test-unit:
-  needs: [test-linter]
+    needs: [test-linter]
     runs-on: ubuntu-latest
 
     steps:
