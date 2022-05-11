@@ -2,11 +2,8 @@ name: Test
 
 on: push
 
-env:
-  NODE_VERSION: '16.15.0'
-
 jobs:
-  test-linter:
+  test:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,33 +18,14 @@ jobs:
       - name: Setup node and cache yarn dependencies
         uses: actions/setup-node@v3
         with:
-          node-version: $NODE_VERSION
-          cache: 'yarn'
-
-      - name: Run linter
-        run: yarn lint
-
-  test-unit:
-    needs: [test-linter]
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.9.1
-        with:
-          access_token: ${{ github.token }}
-
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Setup node and cache yarn dependencies
-        uses: actions/setup-node@v3
-        with:
-          node-version: $NODE_VERSION
+          node-version: '16.15.0'
           cache: 'yarn'
 
       - name: Install dependencies
         run: yarn
+
+      - name: Run linter
+        run: yarn lint
 
       - name: Run test
         run: yarn test --ci
