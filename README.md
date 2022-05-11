@@ -17,6 +17,7 @@ The requirement of this project is about creating a surveyor with different type
 
 ## Prerequisite
 * [Next.js](https://github.com/vercel/next.js)
+* [Node.js - v16.x](https://nodejs.org/dist/latest-v16.x/docs/api/) 
 
 ## Usage
 
