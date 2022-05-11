@@ -1,7 +1,0 @@
-{
-  "extends": [
-    "@nimblehq/eslint-config-nimble-react",
-    "next/core-web-vitals",
-    "prettier"
-  ]
-}

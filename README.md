@@ -1,42 +1,12 @@
-# Internal Certification Challenge
+# Git Repository Template
 
-A project to challenge ourselves with specific web stacks to achieve the Internal Certification. 🚀
-
-The requirement of this project is about creating a surveyor with different types of questions such as the list below here.
-
-#### Type of questions:
-* Listing
-* Yes/No
-* Rating
-* NPS
-* Text input
-* Textarea input
-* Select option
-* Multiple choice
-* Slider
-
-## Prerequisite
-* [Next.js](https://github.com/vercel/next.js)
-* [Node.js - v16.x](https://nodejs.org/dist/latest-v16.x/docs/api/) 
+Project repository template to set up all public projects at [Nimble](https://nimblehq.co/)
 
 ## Usage
 
-#### Clone the repository
+Clone the repository
 
-```sh
-$ git clone git@github.com:Lahphim/react-surveyor-challenge.git
-```
-
-#### Run the application with the development mode
-
-Start the application.
-```sh
-npm run dev
-# or
-yarn dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. ✨
+`git clone git@github.com:nimblehq/git-template.git`
 
 ## License
 
