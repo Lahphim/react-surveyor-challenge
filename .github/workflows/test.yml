@@ -54,8 +54,8 @@ jobs:
         with:
           start: yarn dev
           wait-on: http://localhost:3000
-          wait-on-timeout: 60
           browser: chrome
+          config-file: cypress-ci.json
 
       - name: Upload screenshots
         uses: actions/upload-artifact@v3
