@@ -50,12 +50,13 @@ jobs:
         run: yarn
 
       - name: Run Cypress test
-        uses: cypress-io/github-action@v3
+        # uses: cypress-io/github-action@v3
+        uses: ./
         with:
-          start: yarn dev
-          wait-on: http://localhost:3000
+          start: yarn cypress
+          wait-on: http://localhost:3001
           browser: chrome
-          config-file: cypress-ci.json
+          # config-file: cypress-ci.json
 
       - name: Upload screenshots
         uses: actions/upload-artifact@v3
