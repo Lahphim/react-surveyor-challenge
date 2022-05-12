@@ -50,12 +50,12 @@ jobs:
         run: yarn
 
       - name: Run Cypress test
-        run: yarn cypress
-        # uses: cypress-io/github-action@v3
-        # with:
-          # start: yarn dev
-          # wait-on: http://localhost:3001
-          # browser: chrome
+        # run: yarn cypress
+        uses: cypress-io/github-action@v3
+        with:
+          start: NODE_ENV=test yarn dev -p 3001
+          wait-on: http://localhost:3001
+          browser: chrome
           # config-file: cypress-ci.json
 
       - name: Upload screenshots
