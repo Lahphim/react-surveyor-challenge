@@ -3,7 +3,7 @@ name: Test
 on: push
 
 jobs:
-  test-linter:
+  linter:
     runs-on: ubuntu-latest
 
     steps:
@@ -28,7 +28,7 @@ jobs:
         run: yarn lint
 
   test-ui:
-    needs: [test-linter]
+    needs: [linter]
     runs-on: ubuntu-latest
 
     steps:
@@ -65,7 +65,7 @@ jobs:
           path: cypress/screenshots
 
   test-unit:
-    needs: [test-linter]
+    needs: [linter]
     runs-on: ubuntu-latest
 
     steps:
