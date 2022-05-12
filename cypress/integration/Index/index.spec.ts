@@ -2,6 +2,6 @@ describe('Index page', () => {
   it('displays welcome message', () => {
     cy.visit('/');
 
-    cy.get('h1').contains('Welcome to Next.js!!!!!');
+    cy.get('h1').contains('Welcome to Next.js!');
   });
 });
