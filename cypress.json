@@ -1,5 +1,4 @@
 {
   "baseUrl": "http://localhost:3001",
-  "testFiles": ["**/*.spec.ts"],
-  "port": 3001
+  "testFiles": ["**/*.spec.ts"]
 }
