@@ -54,7 +54,7 @@ jobs:
         with:
           command: yarn cypress
           wait-on: http://localhost:3001
-          wait-on-timeout: 120
+          wait-on-timeout: 60
           browser: chrome
 
       - name: Upload screenshots
