@@ -52,7 +52,7 @@ jobs:
       - name: Run Cypress test
         uses: cypress-io/github-action@v3
         with:
-          start: yarn cypress
+          command: yarn cypress
           wait-on: http://localhost:3001
           wait-on-timeout: 60
           browser: chrome
