@@ -53,7 +53,7 @@ jobs:
         # run: yarn cypress
         uses: cypress-io/github-action@v3
         with:
-          start: NODE_ENV=test yarn dev -p 3001
+          start: yarn dev -p 3001
           wait-on: http://localhost:3001
           browser: chrome
           # config-file: cypress-ci.json
