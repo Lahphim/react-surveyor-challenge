@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "cypress": "NODE_ENV=test PORT=3001 start-server-and-test dev http://localhost:3001 cypress:run",
+    "cypress": "PORT=3001 start-server-and-test dev http://localhost:3001 cypress:run",
     "cypress:run": "cypress run",
     "start": "next start",
     "test": "jest",

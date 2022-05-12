@@ -9,6 +9,7 @@
     "types": [
       "jest",
       "cypress",
+      "node",
       "@testing-library/jest-dom"
     ],
     "allowJs": true,
@@ -20,7 +21,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": false,
+    "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
     "baseUrl": "./src"
@@ -31,6 +32,7 @@
     "**/*.tsx"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "cypress"
   ]
 }
