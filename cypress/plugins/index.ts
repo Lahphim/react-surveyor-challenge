@@ -1,9 +1,11 @@
-require('dotenv').config({ path: '.env.test' });
+import * as dotenv from 'dotenv';
+
+dotenv.config({ path: '.env.test' });
 
 /**
  * @type {Cypress.PluginConfig}
  */
-const loadConfig = (on: any, config: { env: object }) => {
+const loadConfig = (on: unknown, config: { env: object }) => {
   config.env = process.env;
 
   return config;
