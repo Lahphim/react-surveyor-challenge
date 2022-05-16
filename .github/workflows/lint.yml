@@ -4,6 +4,7 @@ on: [push]
 
 jobs:
   linter:
+    name: Run linter for identifying and reporting on the patterns
     runs-on: ubuntu-latest
 
     steps:
