@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   test-ui:
-    name: Run for verifing the application's UI
+    name: test/UI
     runs-on: ubuntu-latest
 
     steps:
@@ -40,7 +40,7 @@ jobs:
           path: cypress/screenshots
 
   test-unit:
-    name: Run for verifying the application's function
+    name: test/Unit
     runs-on: ubuntu-latest
 
     steps:
