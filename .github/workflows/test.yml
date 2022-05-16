@@ -1,0 +1,65 @@
+name: Test
+
+on: [push]
+
+jobs:
+  test-ui:
+    name: test/UI
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Cancel previous runs
+        uses: styfle/cancel-workflow-action@0.9.1
+        with:
+          access_token: ${{ github.token }}
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup node and cache yarn dependencies
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.15.0'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Run Cypress test
+        uses: cypress-io/github-action@v3
+        with:
+          start: yarn dev -p 3001
+          wait-on: http://localhost:3001
+          browser: chrome
+
+      - name: Upload screenshots
+        uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+
+  test-unit:
+    name: test/Unit
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Cancel previous runs
+        uses: styfle/cancel-workflow-action@0.9.1
+        with:
+          access_token: ${{ github.token }}
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup node and cache yarn dependencies
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.15.0'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Run test
+        run: yarn test --coverage --ci
