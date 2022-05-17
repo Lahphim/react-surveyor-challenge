@@ -15,14 +15,36 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.workflow_run.head_branch || github.ref }}
+
+      - name: Set env BRANCH_TAG
+        uses: nimblehq/branch-tag-action@v1.2
+        with:
+          ref: ${{ github.event.workflow_run.head_branch || github.ref }}
+
+      - name: Set production environment variables
+        if: ${{ env.BRANCH_TAG == 'latest' }}
+        env:
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_PRODUCTION }}
+        run: |
+          echo "VERCEL_PROJECT_ID=$VERCEL_PROJECT_ID" >> $GITHUB_ENV
+      
+      - name: Set staging environment variables
+        if: ${{ env.BRANCH_TAG != 'latest' }}
+        env:
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_STAGING }}
+        run: |
+          echo "VERCEL_PROJECT_ID=$VERCEL_PROJECT_ID" >> $GITHUB_ENV
 
       - name: Deployment with github actions
         uses: amondnet/vercel-action@v20
         id: vercel-action-deploy
         with:
+          vercel-args: '--prod'
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-project-id: $VERCEL_PROJECT_ID
 
       - name: Find the current PR
         uses: jwalton/gh-find-current-pr@v1
