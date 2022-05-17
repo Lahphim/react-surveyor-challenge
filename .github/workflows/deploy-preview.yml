@@ -1,0 +1,50 @@
+name: Deploy Preview
+
+on:
+  push:
+    branches-ignore:
+      - master
+      - development
+
+jobs:
+  deploy:
+    name: deploy/Preview
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Cancel previous runs
+        uses: styfle/cancel-workflow-action@0.9.1
+        with:
+          access_token: ${{ github.token }}
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set environment variables
+        run: echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_STAGING }}" >> $GITHUB_ENV
+
+      - name: Deploy preview with github action
+        uses: amondnet/vercel-action@v20
+        id: vercel-action-deploy
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ env.VERCEL_PROJECT_ID }}
+
+      - name: Find the current PR
+        uses: jwalton/gh-find-current-pr@v1
+        id: pr-finder
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Retrieve preview URL
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          number: ${{ steps.pr-finder.outputs.number }}
+          recreate: true
+          message: |
+            **The latest updates on your projects.**
+            | **Name** | **Preview** |
+            | -------- | ----------- |
+            | **${{ steps.vercel-action-deploy.outputs.preview-name }}** | [Visit Preview](${{ steps.vercel-action-deploy.outputs.preview-url }}) |
