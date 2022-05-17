@@ -16,20 +16,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - uses: amondnet/vercel-action@v20
+      - name: Deployment with github actions
+        uses: amondnet/vercel-action@v20
+        id: vercel_preview_url
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
 
-      - run: sleep 30
-      - name: vercel-preview-url
-        uses: zentered/vercel-preview-url@v1.0.7
-        id: vercel_preview_url
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-        with:
-          vercel_team_id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel_project_id: ${{ secrets.VERCEL_PROJECT_ID }}
-      - name: Get URL
-        run: echo "https://${{ steps.vercel_preview_url.outputs.preview_url }}"
+      - name: Retrieve preview URL
+        run: echo "https://${{ steps.vercel_preview_url.outputs.preview-url }}"
