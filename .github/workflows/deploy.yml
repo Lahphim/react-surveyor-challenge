@@ -31,7 +31,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Retrieve preview URL
-        uses: marocchino/sticky-pull-request-comment@v2.0.0
+        uses: marocchino/sticky-pull-request-comment@v2
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           number: ${{ steps.pr-finder.outputs.number }}
@@ -40,4 +40,4 @@ jobs:
             **The latest updates on your projects.**
             | **Name** | **Preview** |
             | -------- | ----------- |
-            | ${{ steps.vercel-action-deploy.outputs.preview-name }} | [Visit Preview](${{ steps.vercel-action-deploy.outputs.preview-url }}) |
+            | **${{ steps.vercel-action-deploy.outputs.preview-name }}** | [Visit Preview](${{ steps.vercel-action-deploy.outputs.preview-url }}) |
