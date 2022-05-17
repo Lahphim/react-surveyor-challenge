@@ -6,5 +6,8 @@
   "trailingSlash": true,
   "github": {
     "enabled": false
-  }
+  },
+  "builds": [
+    { "src": ".next", "use": "@vercel/node" }
+  ]
 }
