@@ -18,11 +18,26 @@ jobs:
 
       - name: Deployment with github actions
         uses: amondnet/vercel-action@v20
-        id: vercel_preview_url
+        id: vercel-action-deploy
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
 
+      - name: Find the current PR
+        uses: jwalton/gh-find-current-pr@v1
+        id: pr-finder
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Retrieve preview URL
-        run: echo "https://${{ steps.vercel_preview_url.outputs.preview-url }}"
+        uses: marocchino/sticky-pull-request-comment@v2.0.0
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          number: ${{ steps.pr-finder.outputs.number }}
+          recreate: true
+          message: |
+            **The latest updates on your projects.**
+            | **Name** | **Preview** |
+            | -------- | ----------- |
+            | ${{ steps.vercel-action-deploy.outputs.preview-name }} | [Visit Preview](${{ steps.vercel-action-deploy.outputs.preview-url }}) |
