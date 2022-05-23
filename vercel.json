@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "regions": ["sin1"],
+  "public": false,
+  "cleanUrls": true,
+  "trailingSlash": true,
+  "github": {
+    "enabled": false
+  }
+}

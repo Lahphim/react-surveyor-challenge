@@ -1,0 +1,50 @@
+name: Deploy
+
+on:
+  workflow_run:
+    workflows:
+      - Test
+    branches:
+      - main
+      - development
+    types:
+      - completed
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: deploy/Vercel
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Cancel previous runs
+        uses: styfle/cancel-workflow-action@0.9.1
+        with:
+          access_token: ${{ github.token }}
+
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.workflow_run.head_branch || github.ref }}
+
+      - name: Set env BRANCH_TAG
+        uses: nimblehq/branch-tag-action@v1.2
+        with:
+          ref: ${{ github.event.workflow_run.head_branch || github.ref }}
+
+      - name: Set production environment variables
+        if: ${{ env.BRANCH_TAG == 'latest' }}
+        run: echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_PRODUCTION }}" >> $GITHUB_ENV
+      
+      - name: Set staging environment variables
+        if: ${{ env.BRANCH_TAG == 'development' }}
+        run: echo "VERCEL_PROJECT_ID=${{ secrets.VERCEL_PROJECT_ID_STAGING }}" >> $GITHUB_ENV
+
+      - name: Deploy with github action
+        uses: amondnet/vercel-action@v20
+        id: vercel-action-deploy
+        with:
+          vercel-args: '--prod'
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ env.VERCEL_PROJECT_ID }}

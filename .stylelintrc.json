@@ -1,0 +1,5 @@
+{
+  "extends": [
+    "@nimblehq/stylelint-config-nimble"
+  ]
+}
