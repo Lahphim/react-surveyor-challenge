@@ -33,80 +33,80 @@ const Home: NextPage = () => {
         <div className={styles.grid}>
           <div className={styles.card}>
             <h2>:: Avatar</h2>
-            <p>
+            <div>
               <AvatarBot email="dev@nimblehq.co"></AvatarBot>
-            </p>
+            </div>
           </div>
 
           <div className={styles.card}>
             <h2>:: Normal Button</h2>
-            <p>
+            <div>
               <Button>Button</Button>
-            </p>
+            </div>
           </div>
 
           <div className={styles.card}>
             <h2>:: Translucent Button</h2>
-            <p>
+            <div>
               <Button colorScheme="translucent">Translucent Button</Button>
-            </p>
+            </div>
           </div>
 
           <div className={styles.card}>
             <h2>:: Long Button</h2>
-            <p>
+            <div>
               <Button>Looooong Content Button</Button>
-            </p>
+            </div>
           </div>
 
           <div className={styles.card}>
             <h2>:: Small Button</h2>
-            <p>
+            <div>
               <Button size="sm">Small Button</Button>
-            </p>
+            </div>
           </div>
 
           <div className={styles.card}>
             <h2>:: Translucent Button</h2>
-            <p>
+            <div>
               <Button colorScheme="translucent" size="sm">
                 Translucent Button
               </Button>
-            </p>
+            </div>
           </div>
 
           <div className={styles.card}>
             <h2>:: Solid Icon Button</h2>
-            <p>
+            <div>
               <IconButton
                 variant="circle"
                 aria-label="Search database"
                 icon={<SearchIcon />}
               />
-            </p>
+            </div>
           </div>
 
           <div className={styles.card}>
             <h2>:: Ghost Icon Button</h2>
-            <p>
+            <div>
               <IconButton
                 variant="circle-ghost"
                 aria-label="Search database"
                 icon={<SearchIcon color="white" />}
               />
-            </p>
+            </div>
           </div>
 
           <div className={styles.card}>
             <h2>:: Input Field</h2>
-            <p>
+            <div>
               <Input placeholder="Placeholder" />
-            </p>
+            </div>
           </div>
 
           <div className={styles.card}>
             <h2>:: Alert Dialog</h2>
-            <p>
+            <div>
               <Button colorScheme="blue" onClick={onOpen}>
                 Open Alert
               </Button>
@@ -144,7 +144,7 @@ const Home: NextPage = () => {
                   </AlertDialogContent>
                 </AlertDialogOverlay>
               </AlertDialog>
-            </p>
+            </div>
           </div>
         </div>
       </main>
