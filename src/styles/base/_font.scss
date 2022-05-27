@@ -1,25 +1,25 @@
 @font-face {
   font-family: 'Neuzeit S LT Std';
+  font-style: normal;
+  font-weight: 400;
   src: url('../../../public/fonts/NeuzeitSLTStd-Book.eot');
   src: url('../../../public/fonts/NeuzeitSLTStd-Book.eot?#iefix') format('embedded-opentype'),
-      url('../../../public/fonts/NeuzeitSLTStd-Book.woff2') format('woff2'),
-      url('../../../public/fonts/NeuzeitSLTStd-Book.woff') format('woff'),
-      url('../../../public/fonts/NeuzeitSLTStd-Book.ttf') format('truetype'),
-      url('../../../public/fonts/NeuzeitSLTStd-Book.svg#NeuzeitSLTStd-Book') format('svg');
-  font-weight: 400;
-  font-style: normal;
+    url('../../../public/fonts/NeuzeitSLTStd-Book.woff2') format('woff2'),
+    url('../../../public/fonts/NeuzeitSLTStd-Book.woff') format('woff'),
+    url('../../../public/fonts/NeuzeitSLTStd-Book.ttf') format('truetype'),
+    url('../../../public/fonts/NeuzeitSLTStd-Book.svg#NeuzeitSLTStd-Book') format('svg');
   font-display: swap;
 }
 
 @font-face {
   font-family: 'Neuzeit S LT Std';
+  font-style: bold;
+  font-weight: 800;
   src: url('../../../public/fonts/NeuzeitSLTStd-BookHeavy.eot');
   src: url('../../../public/fonts/NeuzeitSLTStd-BookHeavy.eot?#iefix') format('embedded-opentype'),
-      url('../../../public/fonts/NeuzeitSLTStd-BookHeavy.woff2') format('woff2'),
-      url('../../../public/fonts/NeuzeitSLTStd-BookHeavy.woff') format('woff'),
-      url('../../../public/fonts/NeuzeitSLTStd-BookHeavy.ttf') format('truetype'),
-      url('../../../public/fonts/NeuzeitSLTStd-BookHeavy.svg#NeuzeitSLTStd-BookHeavy') format('svg');
-  font-weight: 800;
-  font-style: bold;
+    url('../../../public/fonts/NeuzeitSLTStd-BookHeavy.woff2') format('woff2'),
+    url('../../../public/fonts/NeuzeitSLTStd-BookHeavy.woff') format('woff'),
+    url('../../../public/fonts/NeuzeitSLTStd-BookHeavy.ttf') format('truetype'),
+    url('../../../public/fonts/NeuzeitSLTStd-BookHeavy.svg#NeuzeitSLTStd-BookHeavy') format('svg');
   font-display: swap;
 }
