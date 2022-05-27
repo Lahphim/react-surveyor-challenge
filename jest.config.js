@@ -6,6 +6,9 @@ const createJestConfig = nextJest({
 
 const customJestConfig = {
   moduleDirectories: ['node_modules', '<rootDir>/'],
+  moduleNameMapper: {
+    '^@/components/(.*)$': '<rootDir>/src/components/$1',
+  },
   modulePathIgnorePatterns: ['cypress'],
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   testEnvironment: 'jest-environment-jsdom',
