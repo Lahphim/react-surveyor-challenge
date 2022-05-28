@@ -22,7 +22,6 @@
     "baseUrl": "./src",
     "paths": {
       "@/components/*": ["components/*"],
-      "@/constants/*": ["constants/*"],
       "@/styles/*": ["styles/*"],
       "@/theme/*": ["theme/*"],
     }
