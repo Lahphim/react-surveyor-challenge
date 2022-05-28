@@ -55,7 +55,7 @@ const Home: NextPage = () => {
           <div className={styles.card}>
             <h2>:: Long Button</h2>
             <div>
-              <Button>Looooong Content Button</Button>
+              <Button>Loooooooooong Button</Button>
             </div>
           </div>
 
@@ -63,15 +63,6 @@ const Home: NextPage = () => {
             <h2>:: Small Button</h2>
             <div>
               <Button size="sm">Small Button</Button>
-            </div>
-          </div>
-
-          <div className={styles.card}>
-            <h2>:: Translucent Button</h2>
-            <div>
-              <Button colorScheme="translucent" size="sm">
-                Translucent Button
-              </Button>
             </div>
           </div>
 
