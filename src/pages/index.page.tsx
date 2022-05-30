@@ -19,6 +19,10 @@ import Image from 'next/image';
 import AvatarBot from '@/components/AvatarBot';
 import styles from '@/styles/Home.module.scss';
 
+export const homeDataTestIds = {
+  heading: 'home-heading',
+};
+
 const Home: NextPage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const cancelRef = useRef<HTMLButtonElement>(null);
@@ -26,7 +30,7 @@ const Home: NextPage = () => {
   return (
     <div className={styles.container}>
       <main className={styles.main}>
-        <h1 className={styles.title}>
+        <h1 className={styles.title} data-test-id={homeDataTestIds.heading}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
 

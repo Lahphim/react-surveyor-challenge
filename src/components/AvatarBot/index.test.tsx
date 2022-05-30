@@ -1,15 +1,18 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 
-import AvatarBot from '@/components/AvatarBot';
+import AvatarBot, { avatarBotTestIds } from '@/components/AvatarBot';
 
 describe('AvatarBot', () => {
   it('renders avatar with the given email', () => {
     render(<AvatarBot email="dev@nimblehq.co"></AvatarBot>);
 
-    const avatar = screen.getByRole('img', {
+    const avatar = screen.getByTestId(avatarBotTestIds.base);
+    const image = within(avatar).getByRole('img', {
       name: 'dev@nimblehq.co',
     });
 
-    expect(avatar).toBeInTheDocument();
+    expect(avatar).toBeVisible();
+    expect(image).toBeVisible();
+    expect(image).toBeInTheDocument();
   });
 });
