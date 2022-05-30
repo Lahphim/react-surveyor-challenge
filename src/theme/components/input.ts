@@ -7,7 +7,7 @@ const Input = {
           px: '12px',
           h: '56px',
           lineHeight: '1.2941',
-          borderRadius: '2lg',
+          borderRadius: 'xl',
         },
       },
     },
