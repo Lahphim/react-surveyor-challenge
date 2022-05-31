@@ -1,5 +1,9 @@
 .container {
   padding: 0 2rem;
+
+  background-color: #15151a;
+
+  color: #fff;
 }
 
 .main {
@@ -76,7 +80,6 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  max-width: 800px;
 
   @media (max-width: 600px) {
     flex-direction: column;
@@ -86,6 +89,7 @@
 
 .card {
   max-width: 300px;
+  min-height: 160px;
   margin: 1rem;
   padding: 1.5rem;
 
@@ -97,14 +101,6 @@
   color: inherit;
   text-align: left;
   text-decoration: none;
-
-  &:hover,
-  &:focus,
-  &:active {
-    border-color: #0070f3;
-
-    color: #0070f3;
-  }
 
   h2 {
     margin: 0 0 1rem;
