@@ -1,14 +1,12 @@
 import { render, screen } from '@testing-library/react';
 
-import Login from './login.page';
+import Login, { loginDataTestIds } from './login.page';
 
 describe('Login', () => {
   it('renders a heading', () => {
     render(<Login />);
 
-    const heading = screen.getByRole('heading', {
-      name: /welcome to login page!!/i,
-    });
+    const heading = screen.getByTestId(loginDataTestIds.heading);
 
     expect(heading).toBeInTheDocument();
   });
