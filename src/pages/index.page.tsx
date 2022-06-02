@@ -13,17 +13,17 @@ import {
   Input,
   useDisclosure,
 } from '@chakra-ui/react';
-import type { NextPage } from 'next';
 import Image from 'next/image';
 
 import AvatarBot from '@/components/AvatarBot';
+import LayoutDefault from '@/layouts/Default';
 import styles from '@/styles/Home.module.scss';
 
 export const homeDataTestIds = {
   heading: 'home-heading',
 };
 
-const Home: NextPage = () => {
+const Home = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const cancelRef = useRef<HTMLButtonElement>(null);
 
@@ -163,6 +163,10 @@ const Home: NextPage = () => {
       </footer>
     </div>
   );
+};
+
+Home.getLayout = (page: React.ReactNode) => {
+  return <LayoutDefault>{page}</LayoutDefault>;
 };
 
 export default Home;
