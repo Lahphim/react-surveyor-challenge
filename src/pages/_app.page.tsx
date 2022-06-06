@@ -1,3 +1,4 @@
+import '@/styles/globals.scss';
 import type { ReactElement, ReactNode } from 'react';
 
 import { ChakraProvider } from '@chakra-ui/react';
