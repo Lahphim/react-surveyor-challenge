@@ -7,18 +7,21 @@ export const glassWallTestIds = {
 
 interface GlassWallProps {
   src: string;
+  alt?: string;
 }
 
-const GlassWall = ({ src }: GlassWallProps) => {
+const GlassWall = ({ src, alt }: GlassWallProps) => {
   return (
     <Box
       pos="absolute"
       w="100vw"
       h="100vh"
+      minH="full"
+      top="0"
       zIndex="hide"
       data-test-id={glassWallTestIds.base}
     >
-      <Image src={src} alt="hello" layout="fill" objectFit="cover" />
+      <Image src={src} alt={alt} layout="fill" objectFit="cover" />
       <Box
         pos="absolute"
         w="100%"
