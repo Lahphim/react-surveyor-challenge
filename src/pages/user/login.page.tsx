@@ -1,3 +1,8 @@
+import { Box, Center, Container, Grid } from '@chakra-ui/react';
+
+import FormBanner from '@/components/FormBanner';
+import FormLogin from '@/components/FormLogin';
+import GlassWall from '@/components/GlassWall';
 import { LayoutAuthentication } from '@/layouts/index';
 
 export const loginDataTestIds = {
@@ -6,7 +11,30 @@ export const loginDataTestIds = {
 
 const Login = () => {
   return (
-    <h1 data-test-id={loginDataTestIds.heading}>Welcome to login page!!</h1>
+    <>
+      <Container maxW="88">
+        <Center minH="100vh" py="4">
+          <Grid
+            w="full"
+            gridTemplateAreas={{
+              base: `
+                'login-banner'
+                'login-form'
+              `,
+            }}
+          >
+            <Box gridArea="login-banner">
+              <FormBanner message="Sign in to Nimble" />
+            </Box>
+            <Box gridArea="login-form" mt="8">
+              <FormLogin />
+            </Box>
+          </Grid>
+        </Center>
+      </Container>
+
+      <GlassWall src="/images/background-01.png" />
+    </>
   );
 };
 
