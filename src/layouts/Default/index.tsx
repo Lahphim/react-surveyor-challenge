@@ -13,7 +13,7 @@ interface LayoutProps {
 const LayoutDefault = ({ children }: LayoutProps) => {
   useEffect(() => {
     document.body.classList.add(layoutClassName);
-  });
+  }, []);
 
   return (
     <>

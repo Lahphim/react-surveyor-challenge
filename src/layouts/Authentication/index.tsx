@@ -13,7 +13,7 @@ interface LayoutProps {
 const LayoutAuthentication = ({ children }: LayoutProps) => {
   useEffect(() => {
     document.body.classList.add(layoutClassName);
-  });
+  }, []);
 
   return (
     <>
