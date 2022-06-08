@@ -16,7 +16,7 @@ import {
 import Image from 'next/image';
 
 import AvatarBot from '@/components/AvatarBot';
-import LayoutDefault from '@/layouts/Default';
+import { LayoutDefault } from '@/layouts/index';
 import styles from '@/styles/Home.module.scss';
 
 export const homeDataTestIds = {

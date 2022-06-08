@@ -1,8 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
-import LayoutAuthentication, {
-  layoutAuthenticationTestIds,
-} from '@/layouts/Authentication';
+import LayoutAuthentication, { layoutAuthenticationTestIds } from './index';
 
 describe('Authentication Layout', () => {
   it('renders authentication layout', () => {

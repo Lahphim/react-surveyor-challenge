@@ -1,9 +1,5 @@
-import { useEffect } from 'react';
-
-const layoutClassName = 'layout-default';
-
 export const layoutDefaultTestIds = {
-  base: layoutClassName,
+  base: 'layout-default',
 };
 
 interface LayoutProps {
@@ -11,10 +7,6 @@ interface LayoutProps {
 }
 
 const LayoutDefault = ({ children }: LayoutProps) => {
-  useEffect(() => {
-    document.body.classList.add(layoutClassName);
-  }, []);
-
   return (
     <>
       <main className="app-content" data-test-id={layoutDefaultTestIds.base}>

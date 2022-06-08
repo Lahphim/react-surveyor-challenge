@@ -1,9 +1,5 @@
-import { useEffect } from 'react';
-
-const layoutClassName = 'layout-authentication';
-
 export const layoutAuthenticationTestIds = {
-  base: layoutClassName,
+  base: 'layout-authentication',
 };
 
 interface LayoutProps {
@@ -11,10 +7,6 @@ interface LayoutProps {
 }
 
 const LayoutAuthentication = ({ children }: LayoutProps) => {
-  useEffect(() => {
-    document.body.classList.add(layoutClassName);
-  }, []);
-
   return (
     <>
       <main

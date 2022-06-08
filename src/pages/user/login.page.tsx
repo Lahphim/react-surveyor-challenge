@@ -1,4 +1,4 @@
-import LayoutAuthentication from '@/layouts/Authentication';
+import { LayoutAuthentication } from '@/layouts/index';
 
 export const loginDataTestIds = {
   heading: 'login-heading',
