@@ -2,11 +2,12 @@ import { Box, Center, Container, Grid } from '@chakra-ui/react';
 
 import FormBanner from '@/components/FormBanner';
 import FormLogin from '@/components/FormLogin';
-import GlassWall from '@/components/GlassWall';
 import { LayoutAuthentication } from '@/layouts/index';
 
 export const loginDataTestIds = {
-  heading: 'login-heading',
+  base: 'login__container',
+  banner: 'login__banner',
+  form: 'login__form',
 };
 
 const Login = () => {
@@ -22,18 +23,24 @@ const Login = () => {
                 'login-form'
               `,
             }}
+            data-test-id={loginDataTestIds.base}
           >
-            <Box gridArea="login-banner">
-              <FormBanner message="Sign in to Nimble" />
+            <Box gridArea="login-banner" data-test-id={loginDataTestIds.banner}>
+              <FormBanner
+                message="Sign in to Nimble"
+                data-test-id={loginDataTestIds.banner}
+              />
             </Box>
-            <Box gridArea="login-form" mt="8">
+            <Box
+              gridArea="login-form"
+              mt="8"
+              data-test-id={loginDataTestIds.form}
+            >
               <FormLogin />
             </Box>
           </Grid>
         </Center>
       </Container>
-
-      <GlassWall src="/images/background-01.png" />
     </>
   );
 };

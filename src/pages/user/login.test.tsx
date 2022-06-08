@@ -1,13 +1,17 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 
 import Login, { loginDataTestIds } from './login.page';
 
 describe('Login', () => {
-  it('renders a heading', () => {
+  it('renders the login page', () => {
     render(<Login />);
 
-    const heading = screen.getByTestId(loginDataTestIds.heading);
+    const container = screen.getByTestId(loginDataTestIds.base);
+    const banner = within(container).getByTestId(loginDataTestIds.banner);
+    const loginForm = within(container).getByTestId(loginDataTestIds.form);
 
-    expect(heading).toBeInTheDocument();
+    expect(container).toBeInTheDocument();
+    expect(banner).toBeInTheDocument();
+    expect(loginForm).toBeInTheDocument();
   });
 });
