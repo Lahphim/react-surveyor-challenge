@@ -1,7 +1,9 @@
 describe('Login page', () => {
-  it('displays welcome message', () => {
+  it('displays login form', () => {
     cy.visit('/user/login');
 
-    cy.get('h1').contains('Welcome to login page!!');
+    cy.findByLabelText('Email').should('exist');
+    cy.findByLabelText('Password').should('exist');
+    cy.findByRole('button', { name: /Sign in/ }).should('exist');
   });
 });
