@@ -17,40 +17,42 @@ export const formLoginTestIds = {
 
 const FormLogin = () => {
   return (
-    <SimpleGrid spacing="6" data-test-id={formLoginTestIds.base}>
-      <FormControl>
-        <FormLabel htmlFor="email" data-test-id={formLoginTestIds.labelEmail}>
-          Email
-        </FormLabel>
-        <Input
-          id="email"
-          type="email"
-          data-test-id={formLoginTestIds.inputEmail}
-        />
-      </FormControl>
-      <FormControl>
-        <FormLabel
-          htmlFor="password"
-          data-test-id={formLoginTestIds.labelPassword}
-        >
-          Password
-        </FormLabel>
-        <Input
-          id="password"
-          type="password"
-          data-test-id={formLoginTestIds.inputPassword}
-        />
-      </FormControl>
-      <FormControl>
-        <Button
-          type="submit"
-          width="full"
-          data-test-id={formLoginTestIds.submit}
-        >
-          Sign in
-        </Button>
-      </FormControl>
-    </SimpleGrid>
+    <form data-test-id={formLoginTestIds.base}>
+      <SimpleGrid spacing="6" data-test-id={formLoginTestIds.base}>
+        <FormControl>
+          <FormLabel htmlFor="email" data-test-id={formLoginTestIds.labelEmail}>
+            Email
+          </FormLabel>
+          <Input
+            id="email"
+            type="email"
+            data-test-id={formLoginTestIds.inputEmail}
+          />
+        </FormControl>
+        <FormControl>
+          <FormLabel
+            htmlFor="password"
+            data-test-id={formLoginTestIds.labelPassword}
+          >
+            Password
+          </FormLabel>
+          <Input
+            id="password"
+            type="password"
+            data-test-id={formLoginTestIds.inputPassword}
+          />
+        </FormControl>
+        <FormControl>
+          <Button
+            type="submit"
+            width="full"
+            data-test-id={formLoginTestIds.submit}
+          >
+            Sign in
+          </Button>
+        </FormControl>
+      </SimpleGrid>
+    </form>
   );
 };
 
