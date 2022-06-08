@@ -7,10 +7,8 @@ import foundations from '@/theme/foundations';
 import styles from './styles';
 
 const config: ThemeConfig = {
-  config: {
-    cssVarPrefix: 'chk',
-    useSystemColorMode: false,
-  },
+  cssVarPrefix: 'chk',
+  useSystemColorMode: false,
 };
 
 export const theme = extendTheme({
