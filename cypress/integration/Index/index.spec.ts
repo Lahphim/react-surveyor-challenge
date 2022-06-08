@@ -1,5 +1,3 @@
-/// <reference types="cypress" />
-
 describe('Index page', () => {
   it('displays welcome message', () => {
     cy.visit('/');

@@ -1,3 +1,7 @@
+import { ChakraProvider } from '@chakra-ui/react';
+
+import { theme } from '@/theme/index';
+
 export const layoutAuthenticationTestIds = {
   base: 'layout-authentication',
 };
@@ -8,14 +12,14 @@ interface LayoutProps {
 
 const LayoutAuthentication = ({ children }: LayoutProps) => {
   return (
-    <>
+    <ChakraProvider resetCSS theme={theme}>
       <main
         className="app-content"
         data-test-id={layoutAuthenticationTestIds.base}
       >
         {children}
       </main>
-    </>
+    </ChakraProvider>
   );
 };
 
