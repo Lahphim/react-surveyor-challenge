@@ -18,14 +18,14 @@ export const formLoginTestIds = {
 const FormLogin = () => {
   return (
     <form data-test-id={formLoginTestIds.base}>
-      <SimpleGrid spacing="6" data-test-id={formLoginTestIds.base}>
+      <SimpleGrid spacing="6">
         <FormControl>
           <FormLabel htmlFor="email" data-test-id={formLoginTestIds.labelEmail}>
             Email
           </FormLabel>
           <Input
-            id="email"
             type="email"
+            name="email"
             data-test-id={formLoginTestIds.inputEmail}
           />
         </FormControl>
@@ -37,8 +37,8 @@ const FormLogin = () => {
             Password
           </FormLabel>
           <Input
-            id="password"
             type="password"
+            name="password"
             data-test-id={formLoginTestIds.inputPassword}
           />
         </FormControl>
