@@ -26,6 +26,7 @@ const FormLogin = () => {
           <Input
             type="email"
             name="email"
+            required
             data-test-id={formLoginTestIds.inputEmail}
           />
         </FormControl>
@@ -39,6 +40,7 @@ const FormLogin = () => {
           <Input
             type="password"
             name="password"
+            required
             data-test-id={formLoginTestIds.inputPassword}
           />
         </FormControl>
