@@ -24,6 +24,7 @@ const FormLogin = () => {
             Email
           </FormLabel>
           <Input
+            id="email"
             type="email"
             name="email"
             required
@@ -38,6 +39,7 @@ const FormLogin = () => {
             Password
           </FormLabel>
           <Input
+            id="password"
             type="password"
             name="password"
             required
