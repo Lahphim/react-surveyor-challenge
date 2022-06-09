@@ -8,6 +8,7 @@ const customJestConfig = {
   moduleDirectories: ['node_modules', '<rootDir>/'],
   moduleNameMapper: {
     '^@/components/(.*)$': '<rootDir>/src/components/$1',
+    '^@/layouts/(.*)$': '<rootDir>/src/layouts/$1',
   },
   modulePathIgnorePatterns: ['cypress'],
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
