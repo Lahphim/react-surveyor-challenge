@@ -5,6 +5,7 @@
     "types": [
       "jest",
       "cypress",
+      "@testing-library/cypress",
       "@testing-library/jest-dom"
     ],
     "allowJs": true,

@@ -1,3 +1,6 @@
+/// <reference types="cypress" />
+/// <reference types="@testing-library/cypress" />
+
 import * as dotenv from 'dotenv';
 
 dotenv.config({ path: '.env.test' });

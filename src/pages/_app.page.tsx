@@ -1,13 +1,11 @@
 import '@/styles/globals.scss';
 import type { ReactElement, ReactNode } from 'react';
 
-import { ChakraProvider } from '@chakra-ui/react';
 import type { NextPage } from 'next';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 
 import { SEO_TITLE, SEO_DESCRIPTION } from '@/constants/seo';
-import { theme } from '@/theme/index';
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -21,7 +19,7 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page);
 
   return getLayout(
-    <ChakraProvider resetCSS theme={theme}>
+    <>
       <Head>
         <meta
           name="viewport"
@@ -31,7 +29,7 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
         <meta name="description" content={SEO_DESCRIPTION} />
       </Head>
       <Component {...pageProps} />
-    </ChakraProvider>
+    </>
   );
 }
 
