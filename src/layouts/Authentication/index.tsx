@@ -1,5 +1,6 @@
 import { ChakraProvider } from '@chakra-ui/react';
 
+import GlassWall from '@/components/GlassWall';
 import { theme } from '@/theme/index';
 
 export const layoutAuthenticationTestIds = {
@@ -19,6 +20,8 @@ const LayoutAuthentication = ({ children }: LayoutProps) => {
       >
         {children}
       </main>
+
+      <GlassWall src="/images/background-01.png" />
     </ChakraProvider>
   );
 };
