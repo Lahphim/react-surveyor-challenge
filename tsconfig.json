@@ -5,6 +5,7 @@
     "types": [
       "jest",
       "cypress",
+      "@testing-library/cypress",
       "@testing-library/jest-dom"
     ],
     "allowJs": true,
@@ -22,6 +23,8 @@
     "baseUrl": "./src",
     "paths": {
       "@/components/*": ["components/*"],
+      "@/constants/*": ["constants/*"],
+      "@/layouts/*": ["layouts/*"],
       "@/styles/*": ["styles/*"],
       "@/theme/*": ["theme/*"],
     }

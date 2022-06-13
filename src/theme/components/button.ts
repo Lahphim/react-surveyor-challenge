@@ -44,42 +44,40 @@ const variantCircle = (props: StyleProps): SystemStyleObject => {
 };
 
 const Button = {
-  Button: {
-    baseStyle: {
-      lineHeight: '1.2941',
-      borderRadius: '2lg',
-      fontWeight: '800',
+  baseStyle: {
+    lineHeight: '1.2941',
+    borderRadius: '2lg',
+    fontWeight: '800',
+  },
+  sizes: {
+    sm: {
+      h: '40px',
+      minW: '90px',
+      fontSize: '17px',
     },
-    sizes: {
-      sm: {
-        h: '40px',
-        minW: '90px',
-        fontSize: '17px',
-      },
-      md: {
-        h: '56px',
-        minW: '120px',
-        fontSize: '17px',
-      },
+    md: {
+      h: '56px',
+      minW: '120px',
+      fontSize: '17px',
     },
-    variants: {
-      circle: variantCircle,
-      solid: variantSolid,
-      'circle-ghost': {
-        bg: 'transparent',
-        borderRadius: 'full',
-        minW: '56px',
-        _hover: {
-          bg: 'whiteAlpha.300',
-        },
-        _active: {
-          bg: 'whiteAlpha.400',
-        },
+  },
+  variants: {
+    circle: variantCircle,
+    solid: variantSolid,
+    'circle-ghost': {
+      bg: 'transparent',
+      borderRadius: 'full',
+      minW: '56px',
+      _hover: {
+        bg: 'whiteAlpha.300',
+      },
+      _active: {
+        bg: 'whiteAlpha.400',
       },
     },
-    defaultProps: {
-      colorScheme: 'white',
-    },
+  },
+  defaultProps: {
+    colorScheme: 'white',
   },
 };
 

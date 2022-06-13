@@ -1,6 +1,6 @@
 import { render, screen, within } from '@testing-library/react';
 
-import AvatarBot, { avatarBotTestIds } from '@/components/AvatarBot';
+import AvatarBot, { avatarBotTestIds } from './index';
 
 describe('AvatarBot', () => {
   it('renders avatar with the given email', () => {
