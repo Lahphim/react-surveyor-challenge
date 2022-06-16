@@ -13,6 +13,7 @@ const customJestConfig = {
     '^@/theme/(.*)$': '<rootDir>/src/theme/$1',
   },
   modulePathIgnorePatterns: ['cypress'],
+  resolver: '<rootDir>/.jest/resolver.js',
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   testEnvironment: 'jest-environment-jsdom',
 };
