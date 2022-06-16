@@ -28,7 +28,7 @@ const FormBanner = ({ message }: FormBannerProps) => {
           alt="nimble"
           width={168}
           height={40}
-          property="true"
+          priority={true}
         />
       </Box>
       <Box gridArea="banner-message" mt="6" opacity="0.6">
