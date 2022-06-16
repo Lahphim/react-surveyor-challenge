@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker';
 
-import { capitalize } from './';
+import { capitalize } from './index';
 
 describe('String helper', () => {
   describe('capitalize', () => {

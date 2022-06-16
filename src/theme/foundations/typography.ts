@@ -13,6 +13,8 @@ const typography = {
   },
 
   fontSizes: {
+    '2xs': '13px',
+    '2sm': '15px',
     '2lg': '17px',
   },
 };
