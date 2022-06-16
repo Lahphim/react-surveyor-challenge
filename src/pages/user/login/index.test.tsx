@@ -1,6 +1,6 @@
 import { render, screen, within } from '@testing-library/react';
 
-import Login, { loginDataTestIds } from './login.page';
+import Login, { loginDataTestIds } from './index.page';
 
 describe('Login', () => {
   it('renders the login page', () => {
