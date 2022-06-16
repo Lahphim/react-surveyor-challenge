@@ -27,6 +27,7 @@
     "react-dom": "18.1.0"
   },
   "devDependencies": {
+    "@faker-js/faker": "7.2.0",
     "@nimblehq/eslint-config-nimble-react": "1.0.0",
     "@nimblehq/stylelint-config-nimble": "1.0.0",
     "@testing-library/cypress": "8.0.2",
