@@ -1,12 +1,21 @@
 import axios, {
   Method as HTTPMethod,
-  ResponseType,
   AxiosRequestConfig,
   AxiosResponse,
 } from 'axios';
 
-export const defaultOptions: { responseType: ResponseType } = {
+import { baseApiUrl } from '@/config';
+import {
+  camelizeKeyInterceptor,
+  decamelizeKeyInterceptor,
+} from '@/lib/Interceptor';
+
+export const defaultOptions: Partial<AxiosRequestConfig> = {
   responseType: 'json',
+  baseURL: `${baseApiUrl}`,
+  headers: {
+    'Content-Type': 'application/json',
+  },
 };
 
 /**
@@ -30,6 +39,9 @@ const requestManager = (
     ...defaultOptions,
     ...requestOptions,
   };
+
+  axios.interceptors.request.use(decamelizeKeyInterceptor);
+  axios.interceptors.response.use(camelizeKeyInterceptor);
 
   return axios.request(requestParams).then((response: AxiosResponse) => {
     return response.data;
