@@ -11,7 +11,7 @@ describe('Login page', () => {
     cy.findByRole('button', { name: /Sign in/ }).should('be.visible');
   });
 
-  describe('given a valid user credentail', () => {
+  describe('given a valid user credential', () => {
     it('does NOT show the error message box', () => {
       cy.visit('/user/login/');
 

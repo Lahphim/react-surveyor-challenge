@@ -45,7 +45,7 @@ describe('FormLogin', () => {
     expect(inputPassword).toBeVisible();
   });
 
-  describe('given a valid user credentail', () => {
+  describe('given a valid user credential', () => {
     it('does NOT render the error message box', async () => {
       setup();
 
@@ -70,7 +70,7 @@ describe('FormLogin', () => {
     });
   });
 
-  describe('given an INVALID user credentail', () => {
+  describe('given an INVALID user credential', () => {
     it('renders the error message box', async () => {
       setup();
 
