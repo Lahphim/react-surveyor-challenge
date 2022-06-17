@@ -86,7 +86,7 @@ describe('FormLogin', () => {
       });
     });
 
-    describe('given INVALID email', () => {
+    describe('given an INVALID email', () => {
       it('shows an error message', async () => {
         setup();
 
@@ -110,7 +110,7 @@ describe('FormLogin', () => {
       });
     });
 
-    describe('given INVALID password', () => {
+    describe('given an INVALID password', () => {
       it('shows an error message', async () => {
         setup();
 
