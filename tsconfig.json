@@ -27,6 +27,7 @@
       "@/theme": ["theme/index"],
       "@/adapters/*": ["adapters/*"],
       "@/components/*": ["components/*"],
+      "@/constants/*": ["constants/*"],
       "@/layouts/*": ["layouts/*"],
       "@/lib/*": ["lib/*"],
       "@/helpers/*": ["helpers/*"],
