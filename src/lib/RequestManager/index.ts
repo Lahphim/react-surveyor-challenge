@@ -34,10 +34,11 @@ const requestManager = (
   requestOptions: AxiosRequestConfig = {}
 ): Promise<AxiosResponse> => {
   const requestParams: AxiosRequestConfig = {
-    method,
-    url: endpoint,
     ...defaultOptions,
     ...requestOptions,
+
+    method,
+    url: endpoint,
   };
 
   axios.interceptors.request.use(decamelizeKeyInterceptor);
