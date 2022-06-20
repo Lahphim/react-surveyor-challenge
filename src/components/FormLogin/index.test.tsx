@@ -105,7 +105,7 @@ describe('FormLogin', () => {
           );
           const { getByText } = within(flashToastMessageList);
 
-          expect(getByText(/email must be a valid email/i)).toBeInTheDocument();
+          expect(getByText(/email must be a valid email/i)).toBeVisible();
         });
       });
     });
@@ -125,9 +125,7 @@ describe('FormLogin', () => {
           );
           const { getByText } = within(flashToastMessageList);
 
-          expect(
-            getByText(/password is a required field/i)
-          ).toBeInTheDocument();
+          expect(getByText(/password is a required field/i)).toBeVisible();
         });
       });
     });
