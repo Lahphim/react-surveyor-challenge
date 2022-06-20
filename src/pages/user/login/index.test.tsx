@@ -10,8 +10,8 @@ describe('Login', () => {
     const banner = within(container).getByTestId(loginDataTestIds.banner);
     const loginForm = within(container).getByTestId(loginDataTestIds.form);
 
-    expect(container).toBeInTheDocument();
-    expect(banner).toBeInTheDocument();
-    expect(loginForm).toBeInTheDocument();
+    expect(container).toBeVisible();
+    expect(banner).toBeVisible();
+    expect(loginForm).toBeVisible();
   });
 });

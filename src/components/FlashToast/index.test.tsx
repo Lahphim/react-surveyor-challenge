@@ -48,8 +48,8 @@ describe('FlashToast', () => {
         validProps.messageList[1]
       );
 
-      expect(firstMessage).toBeInTheDocument();
-      expect(secondMessage).toBeInTheDocument();
+      expect(firstMessage).toBeVisible();
+      expect(secondMessage).toBeVisible();
     });
   });
 
