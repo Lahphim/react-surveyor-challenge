@@ -2,14 +2,13 @@ import { AxiosResponse, AxiosRequestConfig } from 'axios';
 import { camelizeKeys, decamelizeKeys } from 'humps';
 
 const camelizeKeyInterceptor = (response: AxiosResponse) => {
-  if (
-    response.data &&
-    response.headers['Content-Type'] === 'application/json'
-  ) {
-    response.data = camelizeKeys(response.data);
+  const newResponse = { ...response };
+
+  if (response.data) {
+    newResponse.data = camelizeKeys(newResponse.data);
   }
 
-  return response;
+  return newResponse;
 };
 
 const decamelizeKeyInterceptor = (config: AxiosRequestConfig) => {
