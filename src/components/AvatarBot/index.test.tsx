@@ -13,6 +13,5 @@ describe('AvatarBot', () => {
 
     expect(avatar).toBeVisible();
     expect(image).toBeVisible();
-    expect(image).toBeInTheDocument();
   });
 });

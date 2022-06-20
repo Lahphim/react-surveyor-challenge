@@ -12,7 +12,7 @@ describe('FormBanner', () => {
 
       expect(formBanner).toBeVisible();
       expect(message).toBeVisible();
-      expect(screen.getByText('hello world!')).toBeInTheDocument();
+      expect(screen.getByText('hello world!')).toBeVisible();
     });
   });
 });

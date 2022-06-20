@@ -25,6 +25,7 @@
       "@/components/*": ["components/*"],
       "@/constants/*": ["constants/*"],
       "@/layouts/*": ["layouts/*"],
+      "@/helpers/*": ["helpers/*"],
       "@/styles/*": ["styles/*"],
       "@/theme/*": ["theme/*"],
     }

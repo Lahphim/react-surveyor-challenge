@@ -1,5 +1,4 @@
-import { extendTheme } from '@chakra-ui/react';
-import type { ThemeConfig } from '@chakra-ui/react';
+import { extendTheme, ThemeConfig } from '@chakra-ui/react';
 
 import { Avatar, Button, FormLabel, Input, Modal } from '@/theme/components';
 import foundations from '@/theme/foundations';

@@ -23,7 +23,13 @@ const FormBanner = ({ message }: FormBannerProps) => {
       data-test-id={formBannerTestIds.base}
     >
       <Box display="grid" gridArea="banner-image" textAlign="center">
-        <Image src="/images/logo.svg" alt="nimble" width={168} height={40} />
+        <Image
+          src="/images/logo.svg"
+          alt="nimble"
+          width={168}
+          height={40}
+          priority={true}
+        />
       </Box>
       <Box gridArea="banner-message" mt="6" opacity="0.6">
         <Text
