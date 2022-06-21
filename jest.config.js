@@ -7,10 +7,12 @@ const createJestConfig = nextJest({
 const customJestConfig = {
   moduleDirectories: ['node_modules', '<rootDir>/'],
   moduleNameMapper: {
+    '^@/store$': '<rootDir>/src/store/index.ts',
+    '^@/theme$': '<rootDir>/src/theme/index.ts',
     '^@/components/(.*)$': '<rootDir>/src/components/$1',
     '^@/helpers/(.*)$': '<rootDir>/src/helpers/$1',
     '^@/layouts/(.*)$': '<rootDir>/src/layouts/$1',
-    '^@/theme/(.*)$': '<rootDir>/src/theme/$1',
+    '^@/reducers/(.*)$': '<rootDir>/src/reducers/$1',
   },
   modulePathIgnorePatterns: ['cypress'],
   resolver: '<rootDir>/.jest/resolver.js',
