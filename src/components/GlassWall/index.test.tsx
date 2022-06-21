@@ -1,7 +1,7 @@
 import { ChakraProvider } from '@chakra-ui/react';
 import { render, screen, within } from '@testing-library/react';
 
-import { theme } from '@/theme/index';
+import { theme } from '@/theme';
 
 import GlassWall, { glassWallTestIds } from './index';
 
