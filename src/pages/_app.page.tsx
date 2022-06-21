@@ -1,8 +1,8 @@
 import '@/styles/globals.scss';
-import type { ReactElement, ReactNode } from 'react';
+import { ReactElement, ReactNode } from 'react';
 
-import type { NextPage } from 'next';
-import type { AppProps } from 'next/app';
+import { NextPage } from 'next';
+import { AppProps } from 'next/app';
 import Head from 'next/head';
 
 import { SEO_TITLE, SEO_DESCRIPTION } from '@/constants/seo';

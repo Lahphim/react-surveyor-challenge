@@ -31,11 +31,7 @@ const Login = () => {
                 data-test-id={loginDataTestIds.banner}
               />
             </Box>
-            <Box
-              gridArea="login-form"
-              mt="8"
-              data-test-id={loginDataTestIds.form}
-            >
+            <Box gridArea="login-form" data-test-id={loginDataTestIds.form}>
               <FormLogin />
             </Box>
           </Grid>

@@ -16,6 +16,7 @@ import {
 import Image from 'next/image';
 
 import AvatarBot from '@/components/AvatarBot';
+import FlashToast from '@/components/FlashToast';
 import { LayoutDefault } from '@/layouts/index';
 import styles from '@/styles/Home.module.scss';
 
@@ -139,6 +140,21 @@ const Home = () => {
                   </AlertDialogContent>
                 </AlertDialogOverlay>
               </AlertDialog>
+            </div>
+          </div>
+
+          <div className={styles.card}>
+            <h2>:: Flash Toast</h2>
+            <div>
+              <FlashToast
+                title="Error"
+                messageList={[
+                  'lorem ipsum dolor sit amet',
+                  'consectetur adipiscing elit',
+                  'integer molestie lorem at massa',
+                  'facilisis in pretium nisl aliquet',
+                ]}
+              />
             </div>
           </div>
         </div>
