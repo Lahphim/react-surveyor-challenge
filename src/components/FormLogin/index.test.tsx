@@ -2,7 +2,7 @@ import { ChakraProvider } from '@chakra-ui/react';
 import { render, screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { theme } from '@/theme/index';
+import { theme } from '@/theme';
 
 import { flashToastTestIds } from '../FlashToast/index';
 import FormLogin, { formLoginTestIds } from './index';

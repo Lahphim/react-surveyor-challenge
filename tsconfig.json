@@ -22,12 +22,14 @@
     "incremental": true,
     "baseUrl": "./src",
     "paths": {
+      "@/store": ["store/index"],
+      "@/theme": ["theme/index"],
       "@/components/*": ["components/*"],
       "@/constants/*": ["constants/*"],
       "@/layouts/*": ["layouts/*"],
       "@/helpers/*": ["helpers/*"],
+      "@/reducers/*": ["reducers/*"],
       "@/styles/*": ["styles/*"],
-      "@/theme/*": ["theme/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
