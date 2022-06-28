@@ -31,8 +31,11 @@
       "@/layouts/*": ["layouts/*"],
       "@/lib/*": ["lib/*"],
       "@/helpers/*": ["helpers/*"],
+      "@/hooks/*": ["hooks/*"],
       "@/reducers/*": ["reducers/*"],
       "@/styles/*": ["styles/*"],
+      "@/tests/*": ["tests/*"],
+      "@/types/*": ["types/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
