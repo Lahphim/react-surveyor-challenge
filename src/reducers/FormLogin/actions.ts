@@ -34,8 +34,8 @@ export const extraReducers: (
     .addCase(loginUser.fulfilled, (state, _action) => {
       state.status = 'succeeded';
     })
-    .addCase(loginUser.rejected, (state, action) => {
-      const { errors } = action.payload as ApiErrorList;
+    .addCase(loginUser.rejected, (state, { payload }) => {
+      const { errors } = payload as ApiErrorList;
       const errorList = errors.map((item: ApiError, _index: number) => {
         return item.detail;
       });
