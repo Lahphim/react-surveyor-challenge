@@ -29,7 +29,7 @@ export const formLoginTestIds = {
 const validateSchema = yup
   .object({
     email: yup.string().email().required(),
-    password: yup.string().required(),
+    password: yup.string().max(16).required(),
   })
   .required();
 
@@ -100,6 +100,7 @@ const FormLogin = () => {
               type="submit"
               width="full"
               isLoading={formLoginStatus === 'submitting'}
+              loadingText="Signing in"
               data-test-id={formLoginTestIds.submit}
             >
               Sign in
