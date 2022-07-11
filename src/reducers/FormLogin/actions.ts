@@ -29,19 +29,21 @@ export const extraReducers: (
   builder
     .addCase(loginUser.pending, (state, _action) => {
       state.status = 'submitting';
-      state.errorList = [];
     })
     .addCase(loginUser.fulfilled, (state, _action) => {
       state.status = 'succeeded';
     })
     .addCase(loginUser.rejected, (state, { payload }) => {
-      const { errors } = payload as ApiErrorList;
-      const errorList = errors.map((item: ApiError, _index: number) => {
-        return item.detail;
-      });
+      if (payload) {
+        const { errors } = payload as ApiErrorList;
+        const errorList = errors.map((item: ApiError, _index: number) => {
+          return item.detail;
+        });
+
+        state.errorList = errorList;
+      }
 
       state.status = 'failed';
-      state.errorList = errorList;
     });
 };
 
