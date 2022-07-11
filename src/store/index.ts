@@ -3,7 +3,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import formLoginReducer from '@/reducers/FormLogin';
 import sampleReducer from '@/reducers/Sample';
 
-const reducers = {
+export const reducers = {
   sample: sampleReducer,
   login: formLoginReducer,
 };
