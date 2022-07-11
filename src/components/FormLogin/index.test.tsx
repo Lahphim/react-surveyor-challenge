@@ -1,10 +1,20 @@
-import { render, screen, waitFor, within } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { faker } from '@faker-js/faker';
+import { act, fireEvent, render, screen, within } from '@testing-library/react';
 
+import { useAppSelector, useAppDispatch } from '@/hooks/store';
+import { initialState as formLoginInitialState } from '@/reducers/FormLogin';
+import * as formLoginAsyncActions from '@/reducers/FormLogin/actions';
 import TestProvider from '@/tests/TestProvider';
+import { Login } from '@/types/form';
 
 import { flashToastTestIds } from '../FlashToast/index';
 import FormLogin, { formLoginTestIds } from './index';
+
+jest.mock('@/hooks/store');
+jest.mock('@/reducers/FormLogin/actions');
+jest.mock('@/adapters/Authentication');
+
+const mockDispatch = jest.fn();
 
 describe('FormLogin', () => {
   const setup = () =>
@@ -13,6 +23,39 @@ describe('FormLogin', () => {
         <FormLogin />
       </TestProvider>
     );
+
+  const successResponse: object = {
+    data: {},
+  };
+  const validEmail = faker.internet.email();
+  const validPassword = faker.internet.password();
+  const invalidEmail = 'INVALID_MAIL';
+  const invalidPassword = 'INVALID_PASSWORD_LENGTH';
+
+  const typeUserCredential = ({ email, password }: Login) => {
+    const inputEmail = screen.getByTestId(formLoginTestIds.inputEmail);
+    const inputPassword = screen.getByTestId(formLoginTestIds.inputPassword);
+
+    fireEvent.change(inputEmail, { target: { value: email } });
+    fireEvent.change(inputPassword, { target: { value: password } });
+  };
+
+  const clickSubmitButton = () => {
+    const submit = screen.getByTestId(formLoginTestIds.submit);
+
+    fireEvent.click(submit);
+  };
+
+  beforeEach(() => {
+    (useAppSelector as jest.Mock).mockImplementation(
+      () => formLoginInitialState
+    );
+    (useAppDispatch as jest.Mock).mockImplementation(() => mockDispatch);
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
 
   it('renders the login form', () => {
     setup();
@@ -48,24 +91,34 @@ describe('FormLogin', () => {
     it('does NOT render the error message box', async () => {
       setup();
 
-      const formLogin = screen.getByTestId(formLoginTestIds.base);
-      const submit = within(formLogin).getByTestId(formLoginTestIds.submit);
-      const inputEmail = within(formLogin).getByTestId(
-        formLoginTestIds.inputEmail
-      );
-      const inputPassword = within(formLogin).getByTestId(
-        formLoginTestIds.inputPassword
-      );
-
-      userEvent.type(inputEmail, 'dev@nimblehq.co');
-      userEvent.type(inputPassword, '1234567890');
-      userEvent.click(submit);
-
-      await waitFor(() => {
-        const flashToast = screen.queryByTestId(flashToastTestIds.base);
-
-        expect(flashToast).toBeNull();
+      await act(async () => {
+        typeUserCredential({ email: validEmail, password: validPassword });
+        clickSubmitButton();
       });
+
+      const flashToast = screen.queryByTestId(flashToastTestIds.base);
+
+      expect(flashToast).toBeNull();
+    });
+
+    it('dispatches the loginUser action', async () => {
+      const loginUserSpy = jest
+        .spyOn(formLoginAsyncActions, 'loginUser')
+        .mockResolvedValue(successResponse);
+
+      setup();
+
+      await act(async () => {
+        typeUserCredential({ email: validEmail, password: validPassword });
+        clickSubmitButton();
+      });
+
+      expect(loginUserSpy).toHaveBeenCalledWith({
+        email: validEmail,
+        password: validPassword,
+      });
+
+      loginUserSpy.mockRestore();
     });
   });
 
@@ -73,15 +126,30 @@ describe('FormLogin', () => {
     it('renders the error message box', async () => {
       setup();
 
-      const formLogin = screen.getByTestId(formLoginTestIds.base);
-      const submit = within(formLogin).getByTestId(formLoginTestIds.submit);
+      await act(async () => {
+        clickSubmitButton();
+      });
 
-      userEvent.click(submit);
+      const flashToast = screen.getByTestId(flashToastTestIds.base);
 
-      await waitFor(() => {
-        const flashToast = screen.getByTestId(flashToastTestIds.base);
+      expect(flashToast).toBeVisible();
+    });
 
-        expect(flashToast).toBeVisible();
+    describe('given an empty email', () => {
+      it('shows an error message', async () => {
+        setup();
+
+        await act(async () => {
+          typeUserCredential({ email: '', password: validPassword });
+          clickSubmitButton();
+        });
+
+        const flashToastMessageList = screen.getByTestId(
+          flashToastTestIds.list
+        );
+        const { getByText } = within(flashToastMessageList);
+
+        expect(getByText(/email is a required field/i)).toBeVisible();
       });
     });
 
@@ -89,23 +157,35 @@ describe('FormLogin', () => {
       it('shows an error message', async () => {
         setup();
 
-        const formLogin = screen.getByTestId(formLoginTestIds.base);
-        const submit = within(formLogin).getByTestId(formLoginTestIds.submit);
-        const inputEmail = within(formLogin).getByTestId(
-          formLoginTestIds.inputEmail
-        );
-
-        userEvent.type(inputEmail, 'INVALID_EMAIL');
-        userEvent.click(submit);
-
-        await waitFor(() => {
-          const flashToastMessageList = screen.getByTestId(
-            flashToastTestIds.list
-          );
-          const { getByText } = within(flashToastMessageList);
-
-          expect(getByText(/email must be a valid email/i)).toBeVisible();
+        await act(async () => {
+          typeUserCredential({ email: invalidEmail, password: validPassword });
+          clickSubmitButton();
         });
+
+        const flashToastMessageList = screen.getByTestId(
+          flashToastTestIds.list
+        );
+        const { getByText } = within(flashToastMessageList);
+
+        expect(getByText(/must be a valid email/i)).toBeVisible();
+      });
+    });
+
+    describe('given an empty password', () => {
+      it('shows an error message', async () => {
+        setup();
+
+        await act(async () => {
+          typeUserCredential({ email: validEmail, password: '' });
+          clickSubmitButton();
+        });
+
+        const flashToastMessageList = screen.getByTestId(
+          flashToastTestIds.list
+        );
+        const { getByText } = within(flashToastMessageList);
+
+        expect(getByText(/password is a required field/i)).toBeVisible();
       });
     });
 
@@ -113,19 +193,19 @@ describe('FormLogin', () => {
       it('shows an error message', async () => {
         setup();
 
-        const formLogin = screen.getByTestId(formLoginTestIds.base);
-        const submit = within(formLogin).getByTestId(formLoginTestIds.submit);
-
-        userEvent.click(submit);
-
-        await waitFor(() => {
-          const flashToastMessageList = screen.getByTestId(
-            flashToastTestIds.list
-          );
-          const { getByText } = within(flashToastMessageList);
-
-          expect(getByText(/password is a required field/i)).toBeVisible();
+        await act(async () => {
+          typeUserCredential({ email: validEmail, password: invalidPassword });
+          clickSubmitButton();
         });
+
+        const flashToastMessageList = screen.getByTestId(
+          flashToastTestIds.list
+        );
+        const { getByText } = within(flashToastMessageList);
+
+        expect(
+          getByText(/password must be at most 16 characters/i)
+        ).toBeVisible();
       });
     });
   });
