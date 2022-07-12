@@ -1,3 +1,4 @@
+import { FormEvent } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
 import {
@@ -11,6 +12,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 import FlashToast from '@/components/FlashToast';
+import { useAppDispatch, useAppSelector } from '@/hooks/store';
+import { formLoginActions } from '@/reducers/FormLogin';
+import { loginUser } from '@/reducers/FormLogin/actions';
+import { Login } from '@/types/form';
 
 export const formLoginTestIds = {
   base: 'form-login',
@@ -21,29 +26,33 @@ export const formLoginTestIds = {
   submit: 'form-login__submit',
 };
 
-interface FormInput {
-  email: string;
-  password: string;
-}
-
 const validateSchema = yup
   .object({
     email: yup.string().email().required(),
-    password: yup.string().required(),
+    password: yup.string().max(16).required(),
   })
   .required();
 
 const FormLogin = () => {
+  const dispatch = useAppDispatch();
+
+  const { status: formLoginStatus, errorList: formLoginErrors } =
+    useAppSelector((state) => state.login);
+
   const {
-    handleSubmit,
     register,
     formState: { errors },
-  } = useForm<FormInput>({
+    handleSubmit,
+  } = useForm<Login>({
     resolver: yupResolver(validateSchema),
   });
 
-  const onSubmit: SubmitHandler<FormInput> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<Login> = async (data) => {
+    dispatch(loginUser(data));
+  };
+
+  const handleChange = (_event: FormEvent) => {
+    dispatch(formLoginActions.reset());
   };
 
   return (
@@ -54,10 +63,10 @@ const FormLogin = () => {
         messageList={[
           errors.email?.message || '',
           errors.password?.message || '',
-        ]}
+        ].concat(formLoginErrors)}
       />
 
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} onChange={handleChange}>
         <SimpleGrid mt="8" spacing="6" data-test-id={formLoginTestIds.base}>
           <FormControl>
             <FormLabel
@@ -90,6 +99,8 @@ const FormLogin = () => {
             <Button
               type="submit"
               width="full"
+              isLoading={formLoginStatus === 'submitting'}
+              loadingText="Signing in"
               data-test-id={formLoginTestIds.submit}
             >
               Sign in
