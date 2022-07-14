@@ -2,9 +2,7 @@ import { ActionReducerMapBuilder, createAsyncThunk } from '@reduxjs/toolkit';
 
 import authenticationAdapter from '@/adapters/Authentication';
 import { ApiError, ApiErrorList } from '@/types/error';
-import { Login } from '@/types/form';
-
-import { FormLoginState } from './index';
+import { FormState, Login } from '@/types/form';
 
 export const loginUserAsync = async (
   payload: Login,
@@ -24,7 +22,7 @@ export const loginUserAsync = async (
 export const loginUser = createAsyncThunk('user/login', loginUserAsync);
 
 export const extraReducers: (
-  builder: ActionReducerMapBuilder<FormLoginState>
+  builder: ActionReducerMapBuilder<FormState>
 ) => void = (builder) => {
   builder
     .addCase(loginUser.pending, (state, _action) => {
@@ -48,7 +46,7 @@ export const extraReducers: (
 };
 
 export const formLoginReducers = {
-  reset: (state: FormLoginState): void => {
+  reset: (state: FormState): void => {
     state.status = 'idle';
     state.errorList = [];
   },

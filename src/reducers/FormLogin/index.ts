@@ -1,13 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+import { FormState } from '@/types/form';
+
 import { formLoginReducers, extraReducers } from './actions';
 
-export interface FormLoginState {
-  status: 'idle' | 'submitting' | 'succeeded' | 'failed';
-  errorList: string[];
-}
-
-export const initialState: FormLoginState = {
+export const initialState: FormState = {
   status: 'idle',
   errorList: [],
 };

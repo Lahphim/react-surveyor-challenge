@@ -2,17 +2,17 @@ import { faker } from '@faker-js/faker';
 import { AxiosResponse } from 'axios';
 
 import authenticationAdapter from '@/adapters/Authentication';
-import { Login } from '@/types/form';
+import { FormState, Login } from '@/types/form';
 
 import { formLoginReducers, loginUser, loginUserAsync } from './actions';
-import reducer, { FormLoginState, initialState } from './index';
+import reducer, { initialState } from './index';
 
 jest.mock('@/adapters/Authentication');
 
 describe('form login reducers', () => {
   describe('reset', () => {
     it('resets the status to idle', () => {
-      const mockState: FormLoginState = {
+      const mockState: FormState = {
         ...initialState,
 
         status: 'failed',
@@ -24,7 +24,7 @@ describe('form login reducers', () => {
     });
 
     it('resets the error message list to an empty list', () => {
-      const mockState: FormLoginState = {
+      const mockState: FormState = {
         ...initialState,
 
         errorList: [faker.lorem.text(), faker.lorem.text()],
