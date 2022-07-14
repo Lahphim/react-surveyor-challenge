@@ -27,6 +27,11 @@ jobs:
         with:
           ref: ${{ github.event.workflow_run.head_branch || github.ref }}
 
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.15.0'
+
       - name: Set env BRANCH_TAG
         uses: nimblehq/branch-tag-action@v1.2
         with:
