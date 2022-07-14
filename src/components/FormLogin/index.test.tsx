@@ -46,9 +46,15 @@ describe('FormLogin', () => {
     fireEvent.click(submit);
   };
 
+  const mockState = {
+    login: {
+      ...formLoginInitialState,
+    },
+  };
+
   beforeEach(() => {
-    (useAppSelector as jest.Mock).mockImplementation(
-      () => formLoginInitialState
+    (useAppSelector as jest.Mock).mockImplementation((callback) =>
+      callback(mockState)
     );
     (useAppDispatch as jest.Mock).mockImplementation(() => mockDispatch);
   });

@@ -15,6 +15,7 @@ import FlashToast from '@/components/FlashToast';
 import { useAppDispatch, useAppSelector } from '@/hooks/store';
 import { formLoginActions } from '@/reducers/FormLogin';
 import { loginUser } from '@/reducers/FormLogin/actions';
+import { isFormSubmitting } from '@/reducers/FormLogin/selectors';
 import { Login } from '@/types/form';
 
 export const formLoginTestIds = {
@@ -36,8 +37,8 @@ const validateSchema = yup
 const FormLogin = () => {
   const dispatch = useAppDispatch();
 
-  const { status: formLoginStatus, errorList: formLoginErrors } =
-    useAppSelector((state) => state.login);
+  const { errorList: formLoginErrors } = useAppSelector((state) => state.login);
+  const isSubmitting = useAppSelector(isFormSubmitting);
 
   const {
     register,
@@ -99,7 +100,7 @@ const FormLogin = () => {
             <Button
               type="submit"
               width="full"
-              isLoading={formLoginStatus === 'submitting'}
+              isLoading={isSubmitting}
               loadingText="Signing in"
               data-test-id={formLoginTestIds.submit}
             >
