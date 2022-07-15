@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ActionReducerMapBuilder, createAsyncThunk } from '@reduxjs/toolkit';
 
 import authenticationAdapter from '@/adapters/Authentication';
