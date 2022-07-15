@@ -1,4 +1,3 @@
-/* eslint camelcase: ["error", {allow: ["camel_case_key"]}] */
 import requestManager from '@/lib/RequestManager';
 
 import baseAdapter from './index';
