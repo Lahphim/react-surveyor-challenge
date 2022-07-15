@@ -27,7 +27,6 @@
     "dotenv": "16.0.1",
     "framer-motion": "6.5.1",
     "humps": "2.0.1",
-    "localstorage-slim": "2.3.0",
     "next": "12.1.6",
     "react": "18.1.0",
     "react-dom": "18.1.0",
