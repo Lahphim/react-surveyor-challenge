@@ -1,7 +1,6 @@
-import { ChakraProvider } from '@chakra-ui/react';
 import { render, screen, within } from '@testing-library/react';
 
-import { theme } from '@/theme/index';
+import TestProvider from '@/tests/TestProvider';
 
 import GlassWall, { glassWallTestIds } from './index';
 
@@ -9,9 +8,9 @@ describe('GlassWall', () => {
   describe('given an image', () => {
     it('renders an image', () => {
       render(
-        <ChakraProvider resetCSS theme={theme}>
+        <TestProvider>
           <GlassWall src="/images/background-01.png" alt="background 01" />
-        </ChakraProvider>
+        </TestProvider>
       );
 
       const glassWall = screen.getByTestId(glassWallTestIds.base);
