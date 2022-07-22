@@ -1,9 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ActionReducerMapBuilder, createAsyncThunk } from '@reduxjs/toolkit';
+import Router from 'next/router';
 
 import authenticationAdapter from '@/adapters/Authentication';
-import { ApiError, ApiErrorList } from '@/types/error';
+import { setUserToken } from '@/helpers/Authentication';
+import { getErrorList } from '@/helpers/Payload';
+import { ApiErrorList } from '@/types/error';
 import { FormState, Login } from '@/types/form';
+import { LoginResponse } from '@/types/Response/login';
 
 export const loginUserAsync = async (
   payload: Login,
@@ -11,13 +15,25 @@ export const loginUserAsync = async (
 ) => {
   const { email, password } = payload;
 
-  return authenticationAdapter.login(email, password).catch((error) => {
-    if (!error.response) {
-      throw error;
-    }
+  return authenticationAdapter
+    .login(email, password)
+    .then((response) => {
+      const loginResponse = response.data as LoginResponse;
 
-    return thunkApi.rejectWithValue(error.response.data);
-  });
+      setUserToken({
+        accessToken: loginResponse.attributes.accessToken,
+        refreshToken: loginResponse.attributes.refreshToken,
+      });
+
+      Router.push('/');
+    })
+    .catch((error) => {
+      if (!error.response) {
+        throw error;
+      }
+
+      return thunkApi.rejectWithValue(error.response.data);
+    });
 };
 
 export const loginUser = createAsyncThunk('user/login', loginUserAsync);
@@ -33,21 +49,13 @@ export const extraReducers: (
       state.status = 'succeeded';
     })
     .addCase(loginUser.rejected, (state, { payload }) => {
-      if (payload) {
-        const { errors } = payload as ApiErrorList;
-        const errorList = errors.map((item: ApiError, _index: number) => {
-          return item.detail;
-        });
-
-        state.errorList = errorList;
-      }
-
       state.status = 'failed';
+      state.errorList = getErrorList(payload as ApiErrorList);
     });
 };
 
 export const formLoginReducers = {
-  reset: (state: FormState): void => {
+  reset: (state: FormState) => {
     state.status = 'idle';
     state.errorList = [];
   },
