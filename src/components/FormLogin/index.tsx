@@ -79,6 +79,7 @@ const FormLogin = () => {
             <Input
               {...register('email')}
               id="email"
+              isDisabled={isSubmitting}
               data-test-id={formLoginTestIds.inputEmail}
             />
           </FormControl>
@@ -93,6 +94,7 @@ const FormLogin = () => {
               {...register('password')}
               id="password"
               type="password"
+              isDisabled={isSubmitting}
               data-test-id={formLoginTestIds.inputPassword}
             />
           </FormControl>
